@@ -1,0 +1,29 @@
+{
+  "product_name": "Basic T-Shirt",
+  "product_company": "Zara",
+  "product_category": "673abc222222222222222222",
+  "product_description": "Pamuklu tişört",
+  "product_images": ["https://example.com/tshirt.jpg"],
+  "variantType": "Beden",
+  "hasVariants": true,
+  "isShippingFree": false,
+  "shippingCost": 5,
+  "variants": [
+    {
+      "variantName": "S",
+      "sku": "ZRA-001-S",
+      "product_sales_price": 89,
+      "product_purchase_price": 50,
+      "product_count": 20,
+      "discountAmount": 10
+    },
+    {
+      "variantName": "M",
+      "sku": "ZRA-001-M",
+      "product_sales_price": 89,
+      "product_purchase_price": 50,
+      "product_count": 35,
+      "discountAmount": 10
+    }
+  ]
+}

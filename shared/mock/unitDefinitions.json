@@ -1,0 +1,16 @@
+[
+    {
+        "_id": "673def111111111111111111",
+        "name": "Kutu",
+        "baseUnit": "Adet",
+        "conversionRate": 6,
+        "isActive": true
+    },
+    {
+        "_id": "673def222222222222222222",
+        "name": "Litre",
+        "baseUnit": "Mililitre",
+        "conversionRate": 1000,
+        "isActive": true
+    }
+]

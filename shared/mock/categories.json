@@ -1,0 +1,14 @@
+[
+    {
+        "_id": "673abc111111111111111111",
+        "name": "Gıda",
+        "isActive": true,
+        "description": "Taze gıda ürünleri"
+    },
+    {
+        "_id": "673abc222222222222222222",
+        "name": "Giyim",
+        "isActive": true,
+        "description": "Tekstil ürünleri"
+    }
+]

@@ -1,0 +1,24 @@
+{
+  "customerName": "Rəşad Əliyev",
+  "customerPhone": "+994701234567",
+  "customerAddress": "Gəncə şəhəri, Nizami küçəsi, ev 88",
+  "items": [
+    {
+      "variantId": "67a1b2c3d4e5f6789abcdef0",
+      "quantity": 5
+    },
+    {
+      "variantId": "67a1b2c3d4e5f6789abcdef1",
+      "quantity": 2
+    },
+    {
+      "variantId": "67a1b2c3d4e5f6789abcdef2",
+      "quantity": 1
+    },
+    {
+      "variantId": "67a1b2c3d4e5f6789abcdef3",
+      "quantity": 4
+    }
+  ],
+  "notes": "Ofis ünvanıdır, resepşnə təhvil verin"
+}

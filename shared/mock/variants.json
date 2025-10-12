@@ -1,0 +1,50 @@
+[
+    {
+        "_id": "673var111111111111111111",
+        "productId": "673prd111111111111111111",
+        "variantName": "Standart",
+        "sku": "8690504010101",
+        "product_sales_price": 25,
+        "product_purchase_price": 18,
+        "product_count": 100,
+        "product_images": ["https://example.com/sut-detay.jpg"],
+        "discountAmount": 0,
+        "salesCount": 15
+    },
+    {
+        "_id": "673var222222222222222222",
+        "productId": "673prd222222222222222222",
+        "variantName": "S",
+        "sku": "ZRA-TSHIRT-001-S",
+        "product_sales_price": 89,
+        "product_purchase_price": 50,
+        "product_count": 20,
+        "product_images": ["https://example.com/tshirt-s.jpg"],
+        "discountAmount": 10,
+        "salesCount": 5
+    },
+    {
+        "_id": "673var333333333333333333",
+        "productId": "673prd222222222222222222",
+        "variantName": "M",
+        "sku": "ZRA-TSHIRT-001-M",
+        "product_sales_price": 89,
+        "product_purchase_price": 50,
+        "product_count": 35,
+        "product_images": ["https://example.com/tshirt-m.jpg"],
+        "discountAmount": 10,
+        "salesCount": 12
+    },
+    {
+        "_id": "673var444444444444444444",
+        "productId": "673prd222222222222222222",
+        "variantName": "L",
+        "sku": "ZRA-TSHIRT-001-L",
+        "product_sales_price": 89,
+        "product_purchase_price": 50,
+        "product_count": 50,
+        "product_images": ["https://example.com/tshirt-l.jpg"],
+        "discountAmount": 10,
+        "salesCount": 8
+    }
+]

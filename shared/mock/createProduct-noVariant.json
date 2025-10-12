@@ -1,0 +1,18 @@
+{
+  "product_name": "Süt 1L",
+  "product_company": "Pınar",
+  "product_category": "673abc111111111111111111",
+  "product_description": "Tam yağlı süt",
+  "product_images": ["https://example.com/sut.jpg"],
+  "hasVariants": false,
+  "isShippingFree": true,
+  "shippingCost": 0,
+  "product_unit": "673def222222222222222222",
+  "variant": {
+    "sku": "8690504010101",
+    "product_sales_price": 25,
+    "product_purchase_price": 18,
+    "product_count": 100,
+    "discountAmount": 0
+  }
+}

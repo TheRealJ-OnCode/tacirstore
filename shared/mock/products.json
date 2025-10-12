@@ -1,0 +1,28 @@
+[
+    {
+        "_id": "673prd111111111111111111",
+        "product_name": "Süt 1L",
+        "product_company": "Pınar",
+        "product_category": "673abc111111111111111111",
+        "product_description": "Tam yağlı süt",
+        "product_images": ["https://example.com/sut-genel.jpg"],
+        "variantType": "Standart",
+        "hasVariants": false,
+        "isShippingFree": true,
+        "shippingCost": 0,
+        "product_unit": "673def222222222222222222"
+    },
+    {
+        "_id": "673prd222222222222222222",
+        "product_name": "Basic T-Shirt",
+        "product_company": "Zara",
+        "product_category": "673abc222222222222222222",
+        "product_description": "Pamuklu basic tişört",
+        "product_images": ["https://example.com/tshirt-genel.jpg"],
+        "variantType": "Beden",
+        "hasVariants": true,
+        "isShippingFree": false,
+        "shippingCost": 5,
+        "product_unit": null
+    }
+]
