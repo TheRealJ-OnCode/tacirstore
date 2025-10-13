@@ -1,0 +1,4 @@
+2025-10-13 17:05:39 [INFO]: New order attempt - Customer: Aghazada Jamil, Phone: 0775555665
+2025-10-13 17:05:39 [INFO]: Stock updated - Variant: Standart, Old: 24, New: 23, Quantity: 1
+2025-10-13 17:05:39 [INFO]: Order created successfully - Order Number: ORD-1760364339176-884, Total: 14 ₼, Items: 1
+2025-10-13 17:20:58 [INFO]: Order status updated - Order: ORD-1760364339176-884, Old Status: pending, New Status: delivered
