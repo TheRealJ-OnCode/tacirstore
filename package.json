@@ -31,7 +31,9 @@
     "module-alias": "^2.2.3",
     "mongoose": "^8.19.1",
     "react-hot-toast": "^2.6.0",
-    "react-router-dom": "^7.9.4"
+    "react-router-dom": "^7.9.4",
+    "winston": "^3.18.3",
+    "winston-daily-rotate-file": "^5.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const { Order, Variant } = require("@models");
 const ApiResponse = require("@utils/ApiResponse");
 const OrderQueryBuilder = require("@utils/orderQueryBuilder");
+const logger = require("@utils/logger");
 const getOrders = asyncHandler(async (req, res) => {
     const result = await new OrderQueryBuilder(Order.find(), req.query)
         .filter()
@@ -49,34 +50,21 @@ const getOrderDetail = asyncHandler(async (req, res) => {
 const updateOrderStatus = asyncHandler(async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
-    
-    const validStatuses = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'];
-    
-    if (!status) {
-        return ApiResponse.error(res, "Status is required", null, 400);
-    }
-    
-    if (!validStatuses.includes(status)) {
-        return ApiResponse.error(res, `Invalid status. Must be one of: ${validStatuses.join(', ')}`, null, 400);
-    }
-    
+
     const order = await Order.findById(id);
     
     if (!order) {
+        logger.error(`Order not found for status update: ${id}`);
         return ApiResponse.error(res, "Order not found", null, 404);
     }
-    
+
     const oldStatus = order.status;
-    
     order.status = status;
     await order.save();
-    
-    return ApiResponse.success(res, "Order Status Updated", {
-        orderId: order._id,
-        orderNumber: order.orderNumber,
-        oldStatus,
-        newStatus: status
-    });
+
+    logger.info(`Order status updated - Order: ${order.orderNumber}, Old Status: ${oldStatus}, New Status: ${status}`);
+
+    return ApiResponse.success(res, "Order status updated", order);
 });
 
 const cancelOrder = asyncHandler(async (req, res) => {
