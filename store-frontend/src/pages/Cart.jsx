@@ -4,6 +4,7 @@ import SEO from "../components/common/SEO";
 import { useCart } from "../hooks/useCart";
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import LoadingSpinner from "../components/common/LoadingSpinner"
 const Cart = () => {
   const navigate = useNavigate();
   const { items, updateQuantity, removeItem, getTotal, clearCart } = useCart();

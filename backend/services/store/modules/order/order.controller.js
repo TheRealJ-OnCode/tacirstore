@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const ApiResponse = require("@utils/ApiResponse");
 const { Order } = require("@models")
+const {placeOrderService} = require("./order.service")
 const createOrder = asyncHandler(async (req, res) => {
     try {
         const order = await placeOrderService(req.body);
