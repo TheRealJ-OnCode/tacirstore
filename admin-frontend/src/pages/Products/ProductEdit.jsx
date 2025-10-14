@@ -191,7 +191,7 @@ const ProductEdit = () => {
       const formData = new FormData();
       formData.append('image', file);
 
-      const response = await fetch('http://localhost:5000/api/admin/v1/upload', {
+      const response = await fetch('https://tacirstore-copy-production.up.railway.app/api/admin/v1/health/upload', {
         method: 'POST',
         body: formData,
       });

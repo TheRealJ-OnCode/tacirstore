@@ -18,10 +18,10 @@
     "module-alias": "^2.2.3"
   },
   "_moduleAliases": {
-    "@models": "../../../shared/models",
-    "@shared": "../../../shared",
-    "@utils": "../../../shared/utils",
-    "@middlewares": "../../../shared/middlewares",
-    "@validators": "../../../shared/validators"
+    "@models": "/app/shared/models",
+    "@shared": "/app/shared",
+    "@utils": "/app/shared/utils",
+    "@middlewares": "/app/shared/middlewares",
+    "@validators": "/app/shared/validators"
   }
 }
