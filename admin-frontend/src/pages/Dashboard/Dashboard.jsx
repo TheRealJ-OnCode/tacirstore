@@ -28,7 +28,7 @@ const Dashboard = () => {
   const fetchDashboard = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('https://tacirstore-copy-production.up.railway.app/api/admin/v1/health/dashboard');
+      const response = await axios.get('https://tacirstore-copy-production.up.railway.app/api/admin/v1//dashboard');
       setData(response.data.data);
     } catch (error) {
       toast.error('Dashboard yüklənmədi');

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://tacirstore-copy-production.up.railway.app/api/admin/v1/health',
+  baseURL: 'https://tacirstore-copy-production.up.railway.app/api/admin/v1/',
   headers: {
     'Content-Type': 'application/json',
   },
