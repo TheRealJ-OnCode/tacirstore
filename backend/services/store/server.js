@@ -12,7 +12,9 @@ app.use(cors({
     'http://localhost:5173',
     'https://tacir.store',
     'https://www.tacir.store',
-    'http://localhost:5174'
+    'http://localhost:5174',
+    'https://taciradmin.netlify.app/',
+    'https://tacir-store.netlify.app/'
   ],
   credentials: true
 }));
