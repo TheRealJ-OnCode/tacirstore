@@ -1,4 +1,4 @@
-const {Product,Variant} = require("@models")
+const {Product,Variant} = require("../../../../../shared/models")
 
 const updateProductService = async (productId, data) => {
     const { addVariants, updateVariants, deleteVariants, ...productData } = data;

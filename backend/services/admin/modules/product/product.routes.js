@@ -1,8 +1,8 @@
 const { createProduct, getProducts, getProductDetail, updateProduct, deleteProduct } = require("./product.controller");
-const { validateId } = require("@validators/id.validator");
-const { createProductSchema } = require("@validators/product.validators");
-const { updateProductSchema } = require("@validators/product.validators");
-const validate = require("@middlewares/validate");
+const { validateId } = require("../../../../../shared/validators/id.validator");
+const { createProductSchema } = require("../../../../../shared/validators/product.validators");
+const { updateProductSchema } = require("../../../../../shared/validators/product.validators");
+const validate = require("../../../../../shared/middlewares/validate");
 const r = require("express").Router();
 //! CREATE product
 r.post("/products",validate(createProductSchema),createProduct)

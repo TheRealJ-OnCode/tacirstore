@@ -40,12 +40,5 @@
     "nodemon": "^3.1.10",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.14"
-  },
-  "_moduleAliases": {
-    "@shared": "./shared",
-    "@models": "./shared/models",
-    "@utils": "./shared/utils",
-    "@middlewares": "./shared/middlewares",
-    "@validators": "./shared/validators/"
   }
 }

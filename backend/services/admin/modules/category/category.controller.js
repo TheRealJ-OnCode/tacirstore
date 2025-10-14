@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
-const { Category } = require("@models");
-const ApiResponse = require("@utils/ApiResponse");
+const { Category } = require("../../../../../shared/models");
+const ApiResponse = require("../../../../../shared/utils/ApiResponse");
 
 const getCategories = asyncHandler(async (req, res) => {
     const categories = await Category.find().sort({ createdAt: -1 });

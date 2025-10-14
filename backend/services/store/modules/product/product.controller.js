@@ -1,7 +1,7 @@
-const ApiResponse = require("@utils/ApiResponse");
+const ApiResponse = require("../../../../../shared/utils/ApiResponse");
 const asyncHandler = require("express-async-handler");
-const { Product ,Variant} = require("@models");
-const QueryBuilder = require("@utils/queryBuilder");
+const { Product ,Variant} = require("../../../../../shared/models");
+const QueryBuilder = require("../../../../../shared/utils/queryBuilder");
 const getProducts = asyncHandler(async (req, res) => {
     const result = await new QueryBuilder(Product.find({ isActive: true }), req.query)
         .filter()

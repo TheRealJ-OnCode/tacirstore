@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
-const { UnitDefinition } = require("@models");
-const ApiResponse = require("@utils/ApiResponse");
+const { UnitDefinition } = require("../../../../../shared/models");
+const ApiResponse = require("../../../../../shared/utils/ApiResponse");
 
 const getUnits = asyncHandler(async (req, res) => {
     const units = await UnitDefinition.find().sort({ createdAt: -1 });

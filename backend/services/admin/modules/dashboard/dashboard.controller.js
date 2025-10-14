@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
-const ApiResponse = require("@utils/ApiResponse");
-const { Product, Order, Variant } = require("@models");
+const ApiResponse = require("../../../../../shared/utils/ApiResponse");
+const { Product, Order, Variant } = require("../../../../../shared/models");
 
 const getDashboardStats = asyncHandler(async (req, res) => {
     // 1. Toplam məhsul sayı

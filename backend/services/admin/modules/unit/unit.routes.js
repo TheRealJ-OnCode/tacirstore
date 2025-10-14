@@ -5,7 +5,7 @@ const {
     updateUnit, 
     deleteUnit 
 } = require("./unit.controller");
-const { validateId } = require("@validators/id.validator");
+const { validateId } = require("../../../../../shared/validators/id.validator");
 
 const r = require("express").Router();
 

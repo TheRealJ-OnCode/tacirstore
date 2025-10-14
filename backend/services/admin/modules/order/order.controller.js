@@ -1,8 +1,8 @@
 const asyncHandler = require("express-async-handler");
-const { Order, Variant } = require("@models");
-const ApiResponse = require("@utils/ApiResponse");
-const OrderQueryBuilder = require("@utils/orderQueryBuilder");
-const logger = require("@utils/logger");
+const { Order, Variant } = require("../../../../../shared/models");
+const ApiResponse = require("../../../../../shared/utils/ApiResponse");
+const OrderQueryBuilder = require("../../../../../shared/utils/orderQueryBuilder");
+const logger = require("../../../../../shared/utils/logger");
 const getOrders = asyncHandler(async (req, res) => {
     const result = await new OrderQueryBuilder(Order.find(), req.query)
         .filter()

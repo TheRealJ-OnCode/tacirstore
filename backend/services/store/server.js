@@ -1,4 +1,3 @@
-require('module-alias/register')
 require("dotenv").config({ path: "../../../.env" })
 const express = require("express");
 const router = require("./config/index.routes");
@@ -6,7 +5,7 @@ const app = express();
 const STORE_PORT = process.env.STORE_PORT || 5000;
 const cors = require("cors");
 const helmet = require("helmet");
-const errorHandler = require("@shared/middlewares/errorHandler");
+const errorHandler = require("../../../shared/middlewares/errorHandler");
 const connectDB = require("../../config/db");
 app.use(cors({
   origin: [

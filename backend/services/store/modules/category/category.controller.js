@@ -1,5 +1,5 @@
-const { Category } = require("@models");
-const ApiResponse = require("@utils/ApiResponse");
+const { Category } = require("../../../../../shared/models");
+const ApiResponse = require("../../../../../shared/utils/ApiResponse");
 const asyncHandler = require("express-async-handler");
 
 const getCategories = asyncHandler(async (req, res) => {

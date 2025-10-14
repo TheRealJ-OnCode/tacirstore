@@ -1,5 +1,5 @@
-const { Order, Variant, Product } = require("@models");
-const logger = require("@utils/logger"); 
+const { Order, Variant, Product } = require("../../../../../shared/models");
+const logger = require("../../../../../shared/utils/logger"); 
 
 const placeOrderService = async (orderData) => {
     const { items, customerName, customerPhone, customerAddress, notes } = orderData;

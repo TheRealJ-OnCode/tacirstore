@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
-const { Product, Variant } = require("@models")
-const ApiResponse = require("@utils/ApiResponse");
-const QueryBuilder = require("@utils/queryBuilder");
+const { Product, Variant } = require("../../../../../shared/models")
+const ApiResponse = require("../../../../../shared/utils/ApiResponse");
+const QueryBuilder = require("../../../../../shared/utils/queryBuilder");
 const { updateProductService } = require("./product.service");
 const createProduct = asyncHandler(async (req, res) => {
     const data = req.body

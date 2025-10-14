@@ -1,5 +1,5 @@
 const ApiResponse = require("../utils/ApiResponse");
-const logger = require("@utils/logger");
+const logger = require("../utils/logger");
 const errorHandler = (err, req, res, next) => {
     logger.error(`Error: ${err.message}`, {
         stack: err.stack,
