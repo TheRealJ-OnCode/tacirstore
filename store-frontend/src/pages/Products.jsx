@@ -7,7 +7,7 @@ import ProductFilters from "../components/product/ProductFilters";
 import { getProducts, getCategories } from "../services/api";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import toast from "react-hot-toast";
-import SkeletonCard from '../components/common/SkeletonCard';
+import SkeletonCard from "../components/common/SkeletonCard";
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
@@ -100,8 +100,8 @@ const Products = () => {
     <Layout>
       <SEO
         title="Məhsullar"
-        description="Bütün məhsullarımızı nəzərdən keçirin. Keyfiyyətli məhsullar, sərfəli qiymətlər."
-        keywords="məhsullar, online alış-veriş, kateqoriyalar"
+        description="Bütün məhsullarımızı kəşf edin. Keyfiyyətli məhsullar, sərfəli qiymətlər, sürətli çatdırılma."
+        keywords="məhsullar, online alış-veriş, kateqoriyalar, endirim"
       />
 
       <div className="bg-gray-50 min-h-screen">

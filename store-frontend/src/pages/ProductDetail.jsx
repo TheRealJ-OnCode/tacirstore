@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import SEO from "../components/common/SEO";
 import { getProduct } from "../services/api";
 import { useCart } from "../hooks/useCart";
+import ProductSEO from '../components/common/ProductSEO';
 import {
   ShoppingCart,
   Minus,
@@ -124,6 +125,7 @@ const ProductDetail = () => {
         image={images[0]}
         type="product"
       />
+       <ProductSEO product={product} variants={variants} />
 
       <div className="bg-gray-50 min-h-screen py-8">
         <div className="container mx-auto px-4">
