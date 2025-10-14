@@ -57,7 +57,7 @@ const ProductCreate = () => {
       formData.append("image", file);
 
       const response = await fetch(
-        "https://tacirstore-copy-production.up.railway.app/api/admin/v1//upload",
+        "https://tacirstore-copy-production.up.railway.app/api/admin/v1/upload",
         {
           method: "POST",
           body: formData,
