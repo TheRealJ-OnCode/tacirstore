@@ -68,7 +68,7 @@ const ProductList = () => {
       </div>
 
       {/* Axtarış */}
-      <div className="mb-6 flex gap-4">
+      <div className="mb-6 flex flex-col sm:flex-row gap-4">
         <div className="flex-1 relative">
           <Search
             className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
@@ -85,6 +85,12 @@ const ProductList = () => {
         </div>
         <button
           onClick={fetchProducts}
+          className="w-full sm:w-auto px-6 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg"
+        >
+          Axtar
+        </button>
+        <button
+          onClick={fetchProducts}
           className="px-6 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg"
         >
           Axtar
@@ -93,95 +99,100 @@ const ProductList = () => {
 
       {/* Cədvəl */}
       <div className="bg-white rounded-lg shadow overflow-hidden">
-        <table className="w-full">
-          <thead className="bg-gray-50 border-b">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Şəkil
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Məhsul Adı
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Şirkət
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Qiymət
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Status
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Əməliyyatlar
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200">
-            {products.length === 0 ? (
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[800px]">
+            <thead className="bg-gray-50 border-b">
               <tr>
-                <td colSpan="6" className="px-6 py-8 text-center text-gray-500">
-                  Məhsul tapılmadı
-                </td>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Şəkil
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Məhsul Adı
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Şirkət
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Qiymət
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Status
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Əməliyyatlar
+                </th>
               </tr>
-            ) : (
-              products.map((product) => (
-                <tr key={product._id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
-                    <img
-                      src={product.product_images?.[0] || "/placeholder.png"}
-                      alt={product.product_name}
-                      className="w-12 h-12 object-cover rounded"
-                    />
-                  </td>
-                  <td className="px-6 py-4 font-medium text-gray-900">
-                    {product.product_name}
-                  </td>
-                  <td className="px-6 py-4 text-gray-600">
-                    {product.product_company}
-                  </td>
-                  <td className="px-6 py-4 text-gray-900">
-                    {product.product_sales_price} ₼
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`px-2 py-1 text-xs rounded-full ${
-                        product.isActive
-                          ? "bg-green-100 text-green-800"
-                          : "bg-red-100 text-red-800"
-                      }`}
-                    >
-                      {product.isActive ? "Aktiv" : "Deaktiv"}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => navigate(`/products/${product._id}`)}
-                        className="p-2 text-blue-600 hover:bg-blue-50 rounded"
-                      >
-                        <Eye size={18} />
-                      </button>
-                      <button
-                        onClick={() =>
-                          navigate(`/products/${product._id}/edit`)
-                        }
-                        className="p-2 text-green-600 hover:bg-green-50 rounded"
-                      >
-                        <Edit size={18} />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(product._id)}
-                        className="p-2 text-red-600 hover:bg-red-50 rounded"
-                      >
-                        <Trash2 size={18} />
-                      </button>
-                    </div>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {products.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan="6"
+                    className="px-6 py-8 text-center text-gray-500"
+                  >
+                    Məhsul tapılmadı
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                products.map((product) => (
+                  <tr key={product._id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4">
+                      <img
+                        src={product.product_images?.[0] || "/placeholder.png"}
+                        alt={product.product_name}
+                        className="w-12 h-12 object-cover rounded"
+                      />
+                    </td>
+                    <td className="px-6 py-4 font-medium text-gray-900">
+                      {product.product_name}
+                    </td>
+                    <td className="px-6 py-4 text-gray-600">
+                      {product.product_company}
+                    </td>
+                    <td className="px-6 py-4 text-gray-900">
+                      {product.product_sales_price} ₼
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`px-2 py-1 text-xs rounded-full ${
+                          product.isActive
+                            ? "bg-green-100 text-green-800"
+                            : "bg-red-100 text-red-800"
+                        }`}
+                      >
+                        {product.isActive ? "Aktiv" : "Deaktiv"}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => navigate(`/products/${product._id}`)}
+                          className="p-2 text-blue-600 hover:bg-blue-50 rounded"
+                        >
+                          <Eye size={18} />
+                        </button>
+                        <button
+                          onClick={() =>
+                            navigate(`/products/${product._id}/edit`)
+                          }
+                          className="p-2 text-green-600 hover:bg-green-50 rounded"
+                        >
+                          <Edit size={18} />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(product._id)}
+                          className="p-2 text-red-600 hover:bg-red-50 rounded"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

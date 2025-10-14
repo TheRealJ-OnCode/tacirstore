@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, User, Phone, MapPin, Package, XCircle } from 'lucide-react';
-import orderService from '../../services/orderService';
-import toast from 'react-hot-toast';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { ArrowLeft, User, Phone, MapPin, Package, XCircle } from "lucide-react";
+import orderService from "../../services/orderService";
+import toast from "react-hot-toast";
 
 const OrderDetail = () => {
   const { id } = useParams();
@@ -12,19 +12,19 @@ const OrderDetail = () => {
   const [updatingStatus, setUpdatingStatus] = useState(false);
 
   const statusOptions = [
-    { value: 'pending', label: 'Gözləyən', color: 'yellow' },
-    { value: 'confirmed', label: 'Təsdiqlənmiş', color: 'blue' },
-    { value: 'shipped', label: 'Göndərilmiş', color: 'purple' },
-    { value: 'delivered', label: 'Çatdırılmış', color: 'green' },
-    { value: 'cancelled', label: 'Ləğv edilmiş', color: 'red' },
+    { value: "pending", label: "Gözləyən", color: "yellow" },
+    { value: "confirmed", label: "Təsdiqlənmiş", color: "blue" },
+    { value: "shipped", label: "Göndərilmiş", color: "purple" },
+    { value: "delivered", label: "Çatdırılmış", color: "green" },
+    { value: "cancelled", label: "Ləğv edilmiş", color: "red" },
   ];
 
   const statusColors = {
-    pending: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-    confirmed: 'bg-blue-100 text-blue-800 border-blue-200',
-    shipped: 'bg-purple-100 text-purple-800 border-purple-200',
-    delivered: 'bg-green-100 text-green-800 border-green-200',
-    cancelled: 'bg-red-100 text-red-800 border-red-200',
+    pending: "bg-yellow-100 text-yellow-800 border-yellow-200",
+    confirmed: "bg-blue-100 text-blue-800 border-blue-200",
+    shipped: "bg-purple-100 text-purple-800 border-purple-200",
+    delivered: "bg-green-100 text-green-800 border-green-200",
+    cancelled: "bg-red-100 text-red-800 border-red-200",
   };
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const OrderDetail = () => {
       const response = await orderService.getOrder(id);
       setOrder(response.data);
     } catch (error) {
-      toast.error('Sipariş yüklənmədi');
+      toast.error("Sipariş yüklənmədi");
       console.error(error);
     } finally {
       setLoading(false);
@@ -48,10 +48,10 @@ const OrderDetail = () => {
     try {
       setUpdatingStatus(true);
       await orderService.updateOrderStatus(id, newStatus);
-      toast.success('Status yeniləndi');
+      toast.success("Status yeniləndi");
       fetchOrder();
     } catch (error) {
-      toast.error('Status yenilənmədi');
+      toast.error("Status yenilənmədi");
       console.error(error);
     } finally {
       setUpdatingStatus(false);
@@ -59,24 +59,24 @@ const OrderDetail = () => {
   };
 
   const handleCancelOrder = async () => {
-    if (!confirm('Sifarişi ləğv etmək istədiyinizdən əminsiniz?')) return;
+    if (!confirm("Sifarişi ləğv etmək istədiyinizdən əminsiniz?")) return;
 
     try {
       await orderService.cancelOrder(id);
-      toast.success('Sipariş ləğv edildi');
+      toast.success("Sipariş ləğv edildi");
       fetchOrder();
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Xəta baş verdi');
+      toast.error(error.response?.data?.message || "Xəta baş verdi");
     }
   };
 
   const formatDate = (date) => {
-    return new Date(date).toLocaleDateString('az-AZ', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
+    return new Date(date).toLocaleDateString("az-AZ", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
@@ -100,26 +100,30 @@ const OrderDetail = () => {
   return (
     <div>
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div className="flex items-center gap-4">
           <button
-            onClick={() => navigate('/orders')}
+            onClick={() => navigate("/orders")}
             className="p-2 hover:bg-gray-100 rounded-lg"
           >
             <ArrowLeft size={24} />
           </button>
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">Sipariş Detayları</h1>
-            <p className="text-gray-500 font-mono">{order.orderNumber}</p>
+            <h1 className="text-2xl lg:text-3xl font-bold text-gray-800">
+              Sipariş Detayları
+            </h1>
+            <p className="text-sm lg:text-base text-gray-500 font-mono">
+              {order.orderNumber}
+            </p>
           </div>
         </div>
-        {order.status !== 'cancelled' && order.status !== 'delivered' && (
+        {order.status !== "cancelled" && order.status !== "delivered" && (
           <button
             onClick={handleCancelOrder}
-            className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
           >
             <XCircle size={20} />
-            Ləğv et
+            <span>Ləğv et</span>
           </button>
         )}
       </div>
@@ -128,17 +132,27 @@ const OrderDetail = () => {
         {/* Sol tərəf - Əsas məlumatlar */}
         <div className="lg:col-span-2 space-y-6">
           {/* Məhsullar */}
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow p-4 lg:p-6">
             <h3 className="text-lg font-semibold mb-4">Məhsullar</h3>
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full min-w-[600px]">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Məhsul</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Varyant</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Qiymət</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Say</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Toplam</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                      Məhsul
+                    </th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                      Varyant
+                    </th>
+                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                      Qiymət
+                    </th>
+                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                      Say
+                    </th>
+                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                      Toplam
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -154,10 +168,14 @@ const OrderDetail = () => {
                           )}
                         </div>
                       </td>
-                      <td className="px-4 py-3 text-gray-600">{item.variantName}</td>
+                      <td className="px-4 py-3 text-gray-600">
+                        {item.variantName}
+                      </td>
                       <td className="px-4 py-3 text-right">{item.price} ₼</td>
                       <td className="px-4 py-3 text-right">{item.quantity}</td>
-                      <td className="px-4 py-3 text-right font-semibold">{item.total} ₼</td>
+                      <td className="px-4 py-3 text-right font-semibold">
+                        {item.total} ₼
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -189,13 +207,17 @@ const OrderDetail = () => {
           {/* Status */}
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-lg font-semibold mb-4">Status</h3>
-            <div className={`px-4 py-3 rounded-lg border-2 mb-4 ${statusColors[order.status]}`}>
+            <div
+              className={`px-4 py-3 rounded-lg border-2 mb-4 ${
+                statusColors[order.status]
+              }`}
+            >
               <p className="text-center font-semibold">
-                {statusOptions.find(s => s.value === order.status)?.label}
+                {statusOptions.find((s) => s.value === order.status)?.label}
               </p>
             </div>
-            
-            {order.status !== 'cancelled' && order.status !== 'delivered' && (
+
+            {order.status !== "cancelled" && order.status !== "delivered" && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Status dəyişdir:
@@ -207,7 +229,7 @@ const OrderDetail = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   {statusOptions
-                    .filter(s => s.value !== 'cancelled')
+                    .filter((s) => s.value !== "cancelled")
                     .map((status) => (
                       <option key={status.value} value={status.value}>
                         {status.label}
