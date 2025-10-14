@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import SEO from "../components/common/SEO";
 import { getProduct } from "../services/api";
 import { useCart } from "../hooks/useCart";
-import ProductSEO from '../components/common/ProductSEO';
+import ProductSEO from '../components/common/ProductSeo';
 import {
   ShoppingCart,
   Minus,
