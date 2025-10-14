@@ -15,6 +15,11 @@
     "module-alias": "^2.2.3"
   },
   "_moduleAliases": {
-    "@shared": "../../shared"
+    "@models": "../../../shared/models",
+    "@shared": "../../../shared",
+    "@utils": "../../../shared/utils",
+    "@middlewares": "../../../shared/middlewares",
+    "@validators": "../../../shared/validators"
   }
+
 }

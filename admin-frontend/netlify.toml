@@ -1,6 +1,6 @@
 [build]
   base = "admin-frontend"
-  command = "npm install && npm run build"
+  command = "cd .. && npm install && cd admin-frontend && npm run build"
   publish = "dist"
 
 [build.environment]
