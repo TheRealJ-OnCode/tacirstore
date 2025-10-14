@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://tacirstore-production.up.railway.app/api/store/v1/health';
+const API_URL = import.meta.env.VITE_API_URL || 'https://tacirstore-production.up.railway.app/api/store/v1/';
 
 const api = axios.create({
   baseURL: API_URL,
