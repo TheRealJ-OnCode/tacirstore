@@ -14,6 +14,9 @@ const Checkout = () => {
   const [orderComplete, setOrderComplete] = useState(false);
   const [orderNumber, setOrderNumber] = useState('');
 
+  const MINIMUM_ORDER_AMOUNT = 20;
+  const total = getTotal();
+
   const [formData, setFormData] = useState({
     customerName: '',
     customerPhone: '',
@@ -23,8 +26,8 @@ const Checkout = () => {
 
   const [errors, setErrors] = useState({});
 
-  // Əgər səbət boşdursa, cart'a yönləndir
-  if (items.length === 0 && !orderComplete) {
+  // Əgər səbət boşdursa və ya minimum altındaysa, cart'a yönləndir
+  if ((items.length === 0 || total < MINIMUM_ORDER_AMOUNT) && !orderComplete) {
     navigate('/cart');
     return null;
   }
@@ -51,6 +54,13 @@ const Checkout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // ← YENİ: Double check
+    if (total < MINIMUM_ORDER_AMOUNT) {
+      toast.error(`Minimum sifariş məbləği ${MINIMUM_ORDER_AMOUNT} ₼-dir`);
+      navigate('/cart');
+      return;
+    }
 
     if (!validateForm()) {
       toast.error('Formu düzgün doldurun');
@@ -85,7 +95,6 @@ const Checkout = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    // Xətanı təmizlə
     if (errors[name]) {
       setErrors({ ...errors, [name]: '' });
     }
@@ -284,7 +293,7 @@ const Checkout = () => {
                   <div className="flex justify-between items-center">
                     <span className="text-lg font-semibold">Toplam:</span>
                     <span className="text-2xl font-bold text-primary">
-                      {getTotal().toFixed(2)} ₼
+                      {total.toFixed(2)} ₼
                     </span>
                   </div>
                   <p className="text-sm text-gray-500 mt-2">

@@ -4,16 +4,25 @@ import SEO from "../components/common/SEO";
 import { useCart } from "../hooks/useCart";
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
 import { useState } from "react";
-import LoadingSpinner from "../components/common/LoadingSpinner"
+import LoadingSpinner from "../components/common/LoadingSpinner";
+
 const Cart = () => {
   const navigate = useNavigate();
   const { items, updateQuantity, removeItem, getTotal, clearCart } = useCart();
   const [checkoutLoading, setCheckoutLoading] = useState(false);
+  
+  const MINIMUM_ORDER_AMOUNT = 20; 
+  const total = getTotal();
+
   const handleCheckout = async () => {
     if (items.length === 0) return;
+    
+    // ← YENİ: Minimum yoxlama
+    if (total < MINIMUM_ORDER_AMOUNT) {
+      return; // Düymə zaten disabled
+    }
+    
     setCheckoutLoading(true);
-
-    // Simulate delay (optional)
     setTimeout(() => {
       navigate("/checkout");
     }, 300);
@@ -157,7 +166,7 @@ const Cart = () => {
                   <div className="flex justify-between text-gray-600">
                     <span>Ara toplam:</span>
                     <span className="font-semibold">
-                      {getTotal().toFixed(2)} ₼
+                      {total.toFixed(2)} ₼
                     </span>
                   </div>
                   <div className="flex justify-between text-gray-600">
@@ -172,15 +181,26 @@ const Cart = () => {
                   <div className="flex justify-between items-center">
                     <span className="text-lg font-semibold">Toplam:</span>
                     <span className="text-2xl font-bold text-primary">
-                      {getTotal().toFixed(2)} ₼
+                      {total.toFixed(2)} ₼
                     </span>
                   </div>
                 </div>
 
+                {/* ← YENİ: Minimum Uyarı */}
+                {total < MINIMUM_ORDER_AMOUNT && (
+                  <div className="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                    <p className="text-sm text-yellow-800">
+                      <span className="font-bold">Minimum sifariş: {MINIMUM_ORDER_AMOUNT} ₼</span>
+                      <br />
+                      Daha <span className="font-bold text-primary">{(MINIMUM_ORDER_AMOUNT - total).toFixed(2)} ₼</span> məhsul əlavə edin.
+                    </p>
+                  </div>
+                )}
+
                 <button
                   onClick={handleCheckout}
-                  disabled={checkoutLoading}
-                  className="w-full flex items-center justify-center gap-2 bg-primary text-white py-4 rounded-lg font-bold text-lg hover:bg-primary-dark disabled:bg-gray-400 transition-colors shadow-lg hover:shadow-xl"
+                  disabled={checkoutLoading || total < MINIMUM_ORDER_AMOUNT}
+                  className="w-full flex items-center justify-center gap-2 bg-primary text-white py-4 rounded-lg font-bold text-lg hover:bg-primary-dark disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-lg hover:shadow-xl"
                 >
                   {checkoutLoading ? (
                     <>

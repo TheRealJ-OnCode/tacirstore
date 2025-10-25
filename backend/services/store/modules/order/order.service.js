@@ -1,5 +1,6 @@
+const { MINIMUM_ORDER_AMOUNT } = require("../../../../../shared/constants/amount");
 const { Order, Variant, Product } = require("../../../../../shared/models");
-const logger = require("../../../../../shared/utils/logger"); 
+const logger = require("../../../../../shared/utils/logger");
 
 const placeOrderService = async (orderData) => {
     const { items, customerName, customerPhone, customerAddress, notes } = orderData;
@@ -14,7 +15,7 @@ const placeOrderService = async (orderData) => {
         const { variantId, quantity } = item;
 
         const variant = await Variant.findById(variantId);
-        
+
         if (!variant) {
             logger.error(`Variant not found: ${variantId}`);
             throw new Error(`Variant tapılmadı: ${variantId}`);
@@ -28,7 +29,7 @@ const placeOrderService = async (orderData) => {
         }
 
         const product = await Product.findById(variant.productId);
-        
+
         if (!product || !product.isActive) {
             logger.error(`Product not found or inactive: ${variant.productId}`);
             throw new Error(`Məhsul tapılmadı və ya aktiv deyil`);
@@ -57,11 +58,18 @@ const placeOrderService = async (orderData) => {
         logger.info(`Stock updated - Variant: ${variant.variantName}, Old: ${oldStock}, New: ${variant.product_count}, Quantity: ${quantity}`);
     }
 
-    let shippingCost = 0;
+    const minimumOrderAmount = parseFloat(MINIMUM_ORDER_AMOUNT);
     
+    if (subtotal < minimumOrderAmount) {
+        logger.warn(`Order below minimum - Subtotal: ${subtotal}, Minimum: ${minimumOrderAmount}`);
+        throw new Error(`Minimum sifariş məbləği ${minimumOrderAmount} ₼-dir. Cari məbləğ: ${subtotal.toFixed(2)} ₼`);
+    }
+
+    let shippingCost = 0;
+
     for (const productId of productIds) {
         const product = await Product.findById(productId);
-        
+
         if (!product.isShippingFree) {
             shippingCost = Math.max(shippingCost, product.shippingCost || 0);
         }
