@@ -4,7 +4,7 @@ import SEO from "../components/common/SEO";
 import { getOrder } from "../services/api";
 import { Search, Package, CheckCircle, Truck, XCircle } from "lucide-react";
 import toast from "react-hot-toast";
-
+import LoadingSpinner from "../components/common/LoadingSpinner"
 const OrderTracking = () => {
   const [orderNumber, setOrderNumber] = useState("");
   const [phone, setPhone] = useState("");
