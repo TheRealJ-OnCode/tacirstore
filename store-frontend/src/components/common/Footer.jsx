@@ -65,13 +65,13 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Sosial Şəbəkələr</h3>
             <div className="flex gap-3">
               <a 
-                href="#" 
+                href="https://www.facebook.com/profile.php?id=61582783718168" 
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
               >
                 <Facebook size={20} />
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/tacir.store?igsh=MXhvZWxheXkwYmd4ag==" 
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
               >
                 <Instagram size={20} />

@@ -10,14 +10,14 @@ const Layout = ({ children }) => {
     logo: "https://tacir.store/main-logo.svg",
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+994-XX-XXX-XX-XX",
+      telephone: "+994-50-345-96-37",
       contactType: "customer service",
       areaServed: "AZ",
       availableLanguage: "az",
     },
     sameAs: [
-      "https://facebook.com/tacirstore",
-      "https://instagram.com/tacirstore",
+      "https://www.facebook.com/profile.php?id=61582783718168",
+      "https://instagram.com/tacir.store",
     ],
   };
 
